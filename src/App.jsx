@@ -62,7 +62,6 @@ function App() {
   };
 
   const clearValue = () => {
-    setHistory([])
     setDisplayValue('');
     setResult(0);
   };
@@ -103,7 +102,7 @@ function App() {
       default:
         setResult(0);
     }
-    setHistory([displayValue, total]);
+    displayValue && setHistory([displayValue, total])
     setDisplayValue('');
   };
 
