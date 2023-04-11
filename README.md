@@ -1,6 +1,6 @@
 # Calculator
-Tailwind was used as a layout tool.
-Сan perform primitive mathematical operations with two numbers. (+,-,/,*,%)
+Tailwind was used as a layout tool.  
+Сan perform primitive mathematical operations with two numbers. (+,-,/,*,%)  
 Сan enter numbers from the keyboard
 
 ## Run these commands to run local server:
@@ -11,6 +11,5 @@ Tailwind was used as a layout tool.
 
 ## Domain
 
-I used Vercel to deploy this app.
-
+I used Vercel to deploy this app.  
 https://react-calculate.vercel.app/
