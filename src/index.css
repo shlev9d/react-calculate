@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Basic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins';
+  font-weight: 400;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #37383e;
+}
+
+#root {
+  height: 100%;
+}
+
+.buttonGrid{
+  display: grid;
+  grid-template-areas: 
+    'clear divide mult delete'
+    'seven eight nine minus'
+    'four five six plus'
+    'one two three equals'
+    'percent zero dot equals'
+    ;
+}
+
+.zero {
+  grid-area: zero;
+}
+
+.one {
+  grid-area: one;
+}
+
+.two {
+  grid-area: two;
+}
+
+.three {
+  grid-area: three;
+}
+.four {
+  grid-area: four;
+}
+.five {
+  grid-area: five;
+}
+.six {
+  grid-area: six;
+}
+.seven {
+  grid-area: seven;
+}
+.eight {
+  grid-area: eight;
+}
+.nine {
+  grid-area: nine;
+}
+
+.delete {
+  grid-area: delete;
+}
+.divide {
+  grid-area: divide;
+}
+.equals {
+  grid-area: equals;
+}
+
+.minus {
+  grid-area: minus;
+}
+
+.plus{
+  grid-area: plus;
+}
+
+.mult {
+  grid-area: mult;
+}
+
+.percent {
+  grid-area: percent;
+}
+
+.dot {
+  grid-area: dot;
+}
+
+.clear {
+  grid-area: clear;
+}
