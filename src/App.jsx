@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {allButtons} from './common';
-import Button from './components/Button';
-import Display from './components/Display';
+import Button from './components/Button/Button';
+import Display from './components/Display/Display';
 import './index.css';
 
 function App() {
@@ -17,6 +17,11 @@ function App() {
     document.addEventListener('keydown', e => {
       setKeyDown(e.key);
     });
+    return () => {
+       document.removeEventListener('keydown', e => {
+         setKeyDown(e.key);
+       });
+    }
   }, [displayValue]);
 
   const addValue = value => {
@@ -64,6 +69,7 @@ function App() {
   const clearValue = () => {
     setDisplayValue('');
     setResult(0);
+    setHistory([])
   };
 
   const deleteValue = () => {
@@ -74,9 +80,9 @@ function App() {
     );
   };
 
-  const getResult = () => {
-    let [first, operator, second] = displayValue.split(' ');
-    let total = '';
+  const getResult = expression => {
+    let [first, operator, second] = expression.split(' ');
+    let total = ' ';
 
     if (second && second.includes('%')) {
       second = (+first * +second.slice(0, -1)) / 100;
@@ -102,12 +108,13 @@ function App() {
       default:
         setResult(0);
     }
-    displayValue && setHistory([displayValue, total])
+
+    displayValue && setHistory([displayValue, ` ${total}`]);
     setDisplayValue('');
   };
 
   useEffect(() => {
-    keyDown === 'Enter' && getResult();
+    keyDown === 'Enter' && getResult(displayValue);
     keyDown === 'Backspace' && deleteValue();
     keyDown === 'Escape' && clearValue();
     keyDown === '/' && addValue('÷');
@@ -123,15 +130,15 @@ function App() {
           <Button
             key={button.id}
             button={button}
-            clickFunc={
+            clickFunc={ () => {
               button.value === 'C'
-                ? clearValue
+                ? clearValue()
                 : button.value === 'delete'
-                ? deleteValue
+                ? deleteValue()
                 : button.value === '='
-                ? getResult
-                : addValue
-            }
+                ? getResult(displayValue)
+                : addValue(button.value)
+            }}
           />
         ))}
       </div>
